@@ -1,0 +1,68 @@
+<ng-container *ngIf="authService.isAuthenticated()">
+  <app-admin-post
+    [page]="pagename"
+    (click)="openContestForm()"
+  ></app-admin-post>
+</ng-container>
+
+<div class="grid-container">
+  <div
+    *ngFor="
+      let contest of contests | paginate : { itemsPerPage: 6, currentPage: p }
+    "
+    class="card"
+  >
+    <div class="card-details">
+      <div class="upper">
+        <mat-card-header class="header">
+          <div class="title">
+            <mat-card-title style="font-family: Andalé Mono, monospace"
+              ><b>{{ contest.name }}</b></mat-card-title
+            >
+            <br />
+            <mat-card-subtitle
+              >{{ contest.date | date : "mediumDate" }} at
+              {{ contest.time }}</mat-card-subtitle
+            >
+            <br />
+          </div>
+          <div class="actions" *ngIf="authService.isAuthenticated()">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              class="menu-button"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="deleteContest(contest)">
+                Delete
+              </button>
+              <button mat-menu-item (click)="handleEdit(contest)">Edit</button>
+            </mat-menu>
+          </div>
+        </mat-card-header>
+      </div>
+      <div class="content">
+        <mat-card-content>
+          <p><b>Time left:</b> {{ calculateTimeLeftForContest(contest) }}</p>
+          <p>
+            <b>Link:</b>
+            <a mat-button href="{{ contest.link }}" target="_blank"
+              >Go to contest link</a
+            >
+          </p>
+          <p><b>Password:</b> {{ contest.password }}</p>
+          <!-- <p><b>Description:</b> {{ contest.description }}</p> -->
+          <p><b>Type:</b> {{ contest.type }}</p>
+          <p><b>Duration:</b> {{ contest.duration }}</p>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination controls -->
+<div class="pagination">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

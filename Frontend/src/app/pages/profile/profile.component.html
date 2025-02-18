@@ -1,0 +1,82 @@
+<div class="card-holder" *ngIf="user">
+    <div class="card">
+        <div class="card-data">
+            <img src={{user.codeforces.data.titlePhoto}} />
+            <div>
+                <h2>{{user.name}}</h2>
+                <h3>{{user.email}} | ID: {{user.universityId}}</h3>
+
+                <ul class="stats">
+                    <li>
+                        <var style="text-transform: capitalize;">{{user.codeforces.data.rank}}</var>
+                        <label>Codeforces</label>
+                    </li>
+                    <li>
+                        <var style="text-transform: capitalize;">
+                            {{ user.codechef.data.stars }}
+                            <mat-icon matSuffix>star</mat-icon>
+                        </var>
+                        <label>Codechef</label>
+                    </li>
+                    <li>
+                        <var style="text-transform: capitalize;">{{this.atcoderColor}}</var>
+                        <label>Atcoder</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="buttons">
+            <div class="handle-button">
+                <div class="handle-logo" (click)="navigateToExternalProfile(user.codeforces.handle, 'codeforces')">
+                    <img
+                        src="https://store-images.s-microsoft.com/image/apps.48094.14504742535903781.aedbca21-113a-48f4-b001-4204e73b22fc.503f883f-8339-4dc5-8609-81713a59281f" />
+                </div>
+                <div class="handle-name-button">
+                    <div class="handle-name">
+                        <div class="handle-data">{{user.codeforces.handle}}</div>
+                        <div class="handle-data-header"> Current Rating: </div>
+                        <div class="handle-data">{{user.codeforces.data.rating}}</div>
+                        <div class="handle-data-header"> Max Rating: </div>
+                        <div class="handle-data">{{user.codeforces.data.maxRating}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="handle-button">
+                <div class="handle-logo" (click)="navigateToExternalProfile(user.codechef.handle, 'codechef')">
+                    <img
+                        src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/zruiknbedz8yqafxbazb" />
+                </div>
+                <div class="handle-name-button">
+                    <div class="handle-name">
+                        <div class="handle-data">
+                            {{user.codechef.handle}}
+                        </div>
+                        <div class="handle-data-header">Current Rating: </div>
+                        <div class="handle-data">{{user.codechef.data.currentRating}}</div>
+                        <div class="handle-data-header">Max Rating: </div>
+                        <div class="handle-data">{{user.codechef.data.highestRating}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="handle-button">
+                <div class="handle-logo" (click)="navigateToExternalProfile(user.atcoder.handle, 'atcoder')">
+                    <img src="https://img.atcoder.jp/logo/atcoder/logo_transparent.png" />
+                </div>
+                <div class="handle-name-button">
+                    <div class="handle-name">
+                        <div class="handle-data">
+                            {{user.atcoder.handle}}
+                        </div>
+                        <div class="handle-data-header">Current Rating: </div>
+                        <div class="handle-data">{{user.atcoder.data.rating}}</div>
+                        <div class="handle-data-header">Max Rating: </div>
+                        <div class="handle-data">{{user.atcoder.data.highestRating}}</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</div>

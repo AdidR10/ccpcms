@@ -1,0 +1,24 @@
+<app-loading></app-loading>
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <button mat-icon-button (click)="collapsed.set(!collapsed())">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div>
+    <app-name></app-name>
+  </div>
+  <ng-container *ngIf="!this.authService.isAuthenticated()">
+    <span class="example-spacer"></span>
+    <button mat-raised-button (click)="openAddEditForm()">
+      Register
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+    <app-sidenavbar [collapsed]="collapsed()"></app-sidenavbar>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-body" [style.margin-left]="sidenavWidth()">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
