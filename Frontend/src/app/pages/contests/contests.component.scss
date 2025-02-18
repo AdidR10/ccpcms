@@ -1,0 +1,130 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  // margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    ); /* Adjust column width for larger screens */
+  }
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #edf1f3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.205) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.31),
+    0 24px 46px var(--box-shadow-color);
+  // background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
+  border: 1px solid black;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-right: 20px;
+  background: linear-gradient(
+      to bottom,
+      rgba(11, 14, 175, 0.15) 0%,
+      rgba(40, 30, 126, 0.15) 100%
+    ),
+    radial-gradient(
+        at top center,
+        rgba(17, 45, 204, 0.4) 0%,
+        rgba(17, 24, 122, 0.4) 120%
+      )
+      #989898;
+  background-blend-mode: multiply, multiply;
+
+  // background-color: rgb(64, 84, 180);
+  color: white;
+  height: 100px;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.header-image {
+  background-image: url("/assets/cp-logo.png");
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.card-details {
+  .content {
+    text-align: left;
+    // padding-block: 10px;
+    padding: 10px;
+    // border: 3px solid black;
+  }
+}
+
+.card-details mat-card-content {
+  padding: 0 10px;
+  margin: 100px; /* This margin seems excessive, please adjust as needed */
+}
+
+.card-details h2,
+.card-details mat-card-subtitle {
+  margin: 0 0 10px;
+}
+
+.card-details ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-details ul li {
+  margin-bottom: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.title mat-card-title {
+  font-size: 18px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.actions {
+  width: 20px;
+}
+
+.body {
+  font-family: "Roboto", sans-serif;
+}
+
+.card-details h2,
+.card-details mat-card-subtitle {
+  margin: 0 0 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.pagination {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  font-size: medium;
+}
